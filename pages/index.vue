@@ -26,6 +26,10 @@ $darker: #2c2c2c;
 $theme: #ff9900;
 $light: #e1e1e1;
 
+$desktop-padding: 82px;
+$tablet-padding: 82px;
+$mobile-padding: 82px;
+
 body {
   background-color: $darker;
   overflow-x: hidden;
@@ -36,32 +40,33 @@ body {
     height: calc(100vh + 100vw);
     width: calc(100vh + 100vw);
     border-radius: 100%;
-    background: $theme;
+    background: linear-gradient(to top, $theme 75%, lighten($theme, 25));
     position: absolute;
     top: calc(calc(100vh + 100vw) / -4);
     right: calc(calc(60vh + 60vw) / -1);
   }
 }
 
-.btn {
-  padding: 24px 48px;
-  min-width: 300px;
-  font-weight: lighter;
-  font-size: 32px;
-  border-radius: 32px;
-  background: none;
-  border: solid 2px $theme;
-  color: $theme;
-}
-
 #main {
+  color: $light;
   position: relative;
   z-index: 1;
 
+  .btn {
+    padding: 24px 48px;
+    min-width: 300px;
+    font-weight: lighter;
+    font-size: 32px;
+    border-radius: 32px;
+    background: none;
+    border: solid 2px $theme;
+    color: $theme;
+    text-decoration: none;
+  }
+
   > div {
     overflow: hidden;
-    min-height: 100vh;
-    padding: 48px;
+    padding: 48px $desktop-padding;
 
     .intro {
       min-height: calc(100vh - 48px - 48px);
@@ -74,20 +79,23 @@ body {
         flex-direction: column;
         justify-content: center;
         align-items: flex-start;
+
         * {
-          color: $light;
           margin: 8px 0;
         }
+
         span {
           font-weight: normal;
           font-size: 42px;
         }
+
         h1,
         h2 {
           font-weight: bold;
           color: $theme;
           font-size: 72px;
         }
+
         h3,
         h4 {
           font-weight: normal;
@@ -101,10 +109,11 @@ body {
       }
 
       .handsome-guy {
+        filter: sepia(1) hue-rotate(-10deg) saturate(3);
         width: calc(35vh + 35vw);
         position: absolute;
         bottom: -48px;
-        right: -48px;
+        right: -$desktop-padding;
         transform: scale(-1, 1) translate(0, 10%);
       }
     }
